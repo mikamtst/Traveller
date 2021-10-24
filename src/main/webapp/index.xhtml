@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Traveller - Hotéis</title>
+</h:head>
+<h:body>
+
+<div class="card">
+    <p:tabMenu activeIndex="#{param.i}">
+        <p:menuitem value="Hotéis" outcome="index.xhtml" icon="pi pi-fw pi-book">
+            <f:param name="i" value="0"/>
+        </p:menuitem>
+        <p:menuitem value="Reserva" outcome="reservas.xhtml" icon="pi pi-fw pi-key">
+            <f:param name="i" value="1"/>
+        </p:menuitem>
+        <p:menuitem value="Login" outcome="login.xhtml" icon="pi pi-fw pi-user">
+            <f:param name="i" value="2"/>
+        </p:menuitem>
+                <p:menuitem value="Cadastro" outcome="cadastro.xhtml" icon="pi pi-fw pi-users">
+            <f:param name="i" value="3"/>
+        </p:menuitem>
+    </p:tabMenu>
+</div>
+
+<div style="display: flex; justify-content: space-around; margin-top: 50px;">
+	<p:card style="width: 25em">
+	    <f:facet name="title">
+	        IBIS Styles São Paulo Anhembi
+	    </f:facet>
+	    <f:facet name="subtitle">
+	        R$170,00
+	    </f:facet>
+	
+	    <p>Se é um hotel com facilidade de locomoção, proximidade com centros de exposição tendo o máximo conforto para você e família com a melhor relação custo-benefício é o que você procura, então venha para o ibis Styles São Paulo Anhembi. Faça a sua reserva!</p>
+	</p:card>
+	
+	<p:card style="width: 25em">
+	    <f:facet name="title">
+	        Comfort Ibirapuera
+	    </f:facet>
+	    <f:facet name="subtitle">
+	        R$192,00
+	    </f:facet>
+	
+	    <p>O Comfort Ibirapuera possui 82 confortáveis e aconchegantes apartamentos. Oferecemos também facilidades como fitness center, piscina com solarium e deslumbrante vista de São Paulo, room-service até às 23 horas, restaurante, recepção 24 horas e sala para eventos até 35 pessoas. Localizado em Moema, uma das melhores regiçoes de São Paulo, em frente a Moema do Metro e estamos próximo a ótimos bares e restaurantes, a 1km do Shopping Ibirapuera e Parque do Ibirapuera, e a 3,5km do aeroporto de Congonhas.</p>
+	</p:card>
+	
+	<p:card style="width: 25em">
+	    <f:facet name="title">
+	        Blue Tree Premium Morumbi
+	    </f:facet>
+	    <f:facet name="subtitle">
+	        R$260,00
+	    </f:facet>
+	
+	    <p>Com Wi-Fi gratuito e localizado em frente ao Shopping Morumbi, o Blue Tree Premium Morumbi oferece quartos com TV a cabo. O hotel possui piscina coberta com deck e piscina ao ar livre com uma área de 20 metros para tomar sol. Todos os quartos do Morumbi Blue Tree Premium têm ar-condicionado, frigobar e janelas com isolamento acústico. O serviço de quarto está disponível 24 horas por dia. As suítes contam com TV LCD. O Noah Jonnie Space, restaurante do hotel, oferece diversas especialidades, incluindo refeições leves e típicas de várias regiões. O restaurante serve buffet internacional no almoço e menu à la carte no jantar.</p>
+	</p:card>
+</div>
+</h:body>
+</html>

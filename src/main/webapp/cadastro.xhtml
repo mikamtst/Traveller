@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Traveller - Cadastro</title>
+</h:head>
+<h:body>
+
+<div class="card">
+    <p:tabMenu activeIndex="#{param.i}">
+        <p:menuitem value="Hotéis" outcome="index.xhtml" icon="pi pi-fw pi-book">
+            <f:param name="i" value="0"/>
+        </p:menuitem>
+        <p:menuitem value="Reserva" outcome="reservas.xhtml" icon="pi pi-fw pi-key">
+            <f:param name="i" value="1"/>
+        </p:menuitem>
+        <p:menuitem value="Login" outcome="login.xhtml" icon="pi pi-fw pi-user">
+            <f:param name="i" value="2"/>
+        </p:menuitem>
+                <p:menuitem value="Cadastro" outcome="cadastro.xhtml" icon="pi pi-fw pi-users">
+            <f:param name="i" value="3"/>
+        </p:menuitem>
+    </p:tabMenu>
+</div>
+
+<p:messages id="messages"> <p:autoUpdate/> </p:messages>
+
+<div style="display:flex; justify-content: space-around; margin-top: 100px;">
+<p:card style="width: 25rem; margin-bottom: 2em;">
+    <f:facet name="title">
+        Cadastro de usuários
+    </f:facet>
+
+			<h:form>
+				<div class="card">
+				
+				<label for="name" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Name</label>
+					<div class="p-col-12 p-md-4">
+						<p:inputText placeholder="Nome" required="true" id="name" value="#{userBean.user.name}">
+							<f:validateLength minimum="2" />
+							<f:ajax event="blur" render="messages" />
+						</p:inputText>
+					</div>
+				
+				
+			    <div class="p-field p-grid">
+			        <label for="birthday" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Birthday</label>
+			        <div class="p-col-12 p-md-10">
+			            <p:calendar 
+			            		id="birthday" 
+			            		type="text" 
+			            		value="#{userBean.user.birthDate}" 
+			            		required="true"
+			            		showOn="button"
+			            		mask="dd/MM/yyyy"
+			            >
+			            	<f:ajax event="blur" render="messages" />
+			            </p:calendar>
+			        </div>
+			    </div>
+			    
+			    <label for="name" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Phone</label>
+					<div class="p-col-12 p-md-4">
+						<p:inputText placeholder="XXXXXXXX" required="true" id="phone" value="#{userBean.user.phone}">
+							<f:validateLength minimum="8" />
+							<f:ajax event="blur" render="messages" />
+							<f:validateRegex pattern="^[0-9]+$" />
+						</p:inputText>
+					</div>
+			    
+			    <div class="p-field p-grid">
+			        <label for="email" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">E-mail</label>
+			        <div class="p-col-12 p-md-10">
+			            <p:inputText 
+			            		id="email" 
+			            		type="text" 
+			            		value="#{userBean.user.email}" 
+			            		required="true"
+			            		validatorMessage="E-mail inválido"
+			            >
+			            	<f:ajax event="blur" render="messages" />
+			            	<f:validateRegex pattern="([^.@]+)(\.[^.@]+)*@([^.@]+\.)+([^.@]+)" />
+			            </p:inputText>
+			        </div>
+			    </div>
+			    
+			    <div class="p-field p-grid">
+			        <label for="password" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0">Password</label>
+			        <div class="p-col-12 p-md-10">
+			            <p:password 
+			            		id="password" 
+			            		type="text" 
+			            		value="#{userBean.user.password}" 
+			            		required="true"
+			            		toggleMask="true"
+			            		feedback="true"
+			            	>
+			            	<f:ajax event="blur" render="messages" />
+			            </p:password>
+			        </div>
+			    </div>	
+				
+
+				</div>
+
+				<p:commandButton icon="pi pi-check" value="Cadastrar" style="margin-top: 30px;" action="#{userBean.save}">
+					<f:ajax render="messages" execute="@form"/>
+				</p:commandButton>
+				<p:commandButton icon="pi pi-times" value="Cancelar"
+					styleClass="ui-button-secondary" style="margin-left: .5em" />
+			</h:form>
+			
+				
+		<div class="card">
+		    <h:form id="form">
+		        <p:dataTable id="users" var="user" value="#{userBean.users}">
+		            <f:facet name="header">
+		                Users List
+		            </f:facet>
+		
+		            <p:column headerText="Name">
+		                <h:outputText value="#{user.name}" />
+		            </p:column>
+
+		            <p:column headerText="Birthday">
+		                <h:outputText value="#{user.birthDate}">
+		                	<f:convertDateTime dateStyle="short" locale="pt_BR" />
+		                </h:outputText>
+		            </p:column>
+		            
+		            <p:column headerText="Phone">
+		                <h:outputText value="#{user.phone}" />
+		            </p:column>
+		           
+		            <p:column headerText="E-mail">
+		                 <h:outputText value="#{user.email}" />
+
+		            </p:column>
+		        </p:dataTable>
+		     </h:form>
+		  </div>
+</p:card>
+
+</div>
+</h:body>
+</html>
